@@ -14,6 +14,7 @@ const ChartRetip = ({
   title,
   text,
   input,
+  getTypeInput
 }) => {
   return (
     <>
@@ -25,7 +26,7 @@ const ChartRetip = ({
           <p className="text text-box">{text}</p>
 
           {input ? (
-            <TypeInputRetip />
+            <TypeInputRetip getTypeInput={getTypeInput} />
           ) : (
             <h3 className="invisible-text">Sagbladutnyttelse</h3>
           )}

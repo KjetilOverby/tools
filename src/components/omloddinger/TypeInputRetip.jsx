@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const TypeInputRetip = ({}) => {
+const TypeInputRetip = ({getTypeInput}) => {
   const sawblades = [
     {
       value: "Kanefusa 2.2-3.6",
@@ -57,17 +57,21 @@ const TypeInputRetip = ({}) => {
     },
   ];
 
-  // const getTypeInputHandler = (e) => {
-  //   setgetTypeRetip(e.target.value);
-  // };
+ 
+  const getTypeInputHandler = (e) => {
+    getTypeInput(e.target.value);
+    
+   };
+  
   return (
     <div>
-      <select id="">
+      <select id="" onChange={getTypeInputHandler}>
         {sawblades.map((item) => {
+          
           return (
-            <>
-              <option value={item.value} label={item.label} />
-            </>
+            
+              <option key={item.value} onChange={getTypeInputHandler} value={item.value} label={item.label} />
+           
           );
         })}
       </select>

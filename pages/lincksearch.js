@@ -406,7 +406,7 @@ const Lincksearch = () => {
               </p>
               {retipBlades &&
                 retipBlades.map((item) => {
-                  console.log(item.wasteDate);
+                 
                   return (
                     <>
                       <p key={item._id} className="waste-list">

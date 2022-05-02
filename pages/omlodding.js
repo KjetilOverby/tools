@@ -10,32 +10,63 @@ const api = axios.create({
   baseURL: process.env.api,
 });
 
+
 const Omlodding = () => {
   const [deletedBlades, setDeletedBlades] = useState();
+  const [getTypeRetip, setGetTypeRetip] = useState('Kanefusa 2.8-4.2');
 
+
+  
   const currentYear = new Date().getFullYear();
   const firstDate = 1;
   const lastDate = 12;
-
+  
   const [yearRequest, setYearRequest] = useState(new Date().getFullYear());
   const [monthRequest, setMonthRequest] = useState(new Date().getMonth() + 1);
   const [monthRequest2, setMonthRequest2] = useState(new Date().getMonth() + 1);
   const [update, setUpdate] = useState(false);
-
+  
   const [zero, setZero] = useState("");
   const [one, setOne] = useState("");
   const [two, setTwo] = useState("");
   const [three, setThree] = useState("");
   const [four, setFour] = useState("");
   const [more, setMore] = useState("");
-
+  const [zeroS, setZeroS] = useState("");
+  const [oneS, setOneS] = useState("");
+  const [twoS, setTwoS] = useState("");
+  const [threeS, setThreeS] = useState("");
+  const [fourS, setFourS] = useState("");
+  const [moreS, setMoreS] = useState("");
+  
   useEffect(() => {
     setTimeout(() => {
       setUpdate(!update);
     }, 2200);
   }, []);
-
+  
   const [allBladesRetip, setAllBladesRetip] = useState();
+   const [bladeTypeFilter, setBladeTypeFilter] = useState()
+useEffect(() => {
+if(allBladesRetip) {
+ setBladeTypeFilter(allBladesRetip.filter(item => item.type === getTypeRetip))
+ 
+}
+}, [allBladesRetip, getTypeRetip])
+
+
+
+
+useEffect(() => {
+  if (bladeTypeFilter) {
+    setZeroS(bladeTypeFilter.filter((item) => item.performer.length == "0"));
+    setOneS(bladeTypeFilter.filter((item) => item.performer.length == "1"));
+    setTwoS(bladeTypeFilter.filter((item) => item.performer.length == "2"));
+    setThreeS(bladeTypeFilter.filter((item) => item.performer.length == "3"));
+    setFourS(bladeTypeFilter.filter((item) => item.performer.length == "4"));
+    setMoreS(bladeTypeFilter.filter((item) => item.performer.length > 4));
+  }
+}, [bladeTypeFilter]);
 
   useEffect(() => {
     api
@@ -68,6 +99,8 @@ const Omlodding = () => {
     }
   }, [allBladesRetip]);
 
+  const [updateCalc, setUpdateCalc] = useState(false)
+
   useEffect(() => {
     api
       .get(
@@ -83,6 +116,9 @@ const Omlodding = () => {
       .then(function () {
         // always executed
       });
+      setTimeout(() => {
+        setUpdateCalc(!updateCalc)
+      }, 1000);
   }, [monthRequest, yearRequest]);
 
   useEffect(() => {
@@ -106,22 +142,30 @@ const Omlodding = () => {
   const [retipCount, setRetipCount] = useState();
   const [percentage, setPercentage] = useState();
 
+  const [allBlades, setAllblades] = useState()
+  
+  useEffect(() => {
+  setTimeout(() => {
+    setUpdateCalc(!updateCalc)
+  }, 1000);
+  
+  }, [allBlades]);
   useEffect(() => {
     if (deletedBlades) {
-      const allBlades = deletedBlades.length;
+      setAllblades(deletedBlades.length)
       setRetipCount(zeroM + oneM + twoM + threeM + fourM + moreM);
-
-      setPercentage((retipCount / allBlades) * 100);
+      setUpdate(!update)
     }
-  });
+  }, [updateCalc]);
+  
+  useEffect(() => {
+    setPercentage((retipCount / allBlades) * 100);
+   
+  }, [update]);
 
-  // const percentCalc = () => {
-  //   if (deletedBlades) {
-  //     const allBlades = deletedBlades.length;
-  //     setRetipCount(zeroM + oneM + twoM + threeM + fourM + moreM);
-  //     setPercentage((retipCount / allBlades) * 100);
-  //   }
-  // };
+
+
+ 
 
   return (
     <>
@@ -228,15 +272,16 @@ const Omlodding = () => {
               <ChartRetip
                 deletedBlades={deletedBlades}
                 title="Omloddinger på individuelle blad"
-                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "
-                allBladesRetip={allBladesRetip}
-                zeroA={zeroA && zeroA.length}
-                oneA={oneA && oneA.length}
-                twoA={twoA && twoA.length}
-                threeA={threeA && threeA.length}
-                fourA={fourA && fourA.length}
-                moreA={moreA && moreA.length}
+                text={`Her ser du omloddinger på ${getTypeRetip}. Velg nedenfor hvilken bladtype du vil se.`}
+                allBladesRetip={bladeTypeFilter}
+                zeroA={zeroS && zeroS.length}
+                oneA={oneS && oneS.length}
+                twoA={twoS && twoS.length}
+                threeA={threeS && threeS.length}
+                fourA={fourS && fourS.length}
+                moreA={moreS && moreS.length}
                 input={true}
+                getTypeInput={setGetTypeRetip}
               />
             </div>
           </div>
