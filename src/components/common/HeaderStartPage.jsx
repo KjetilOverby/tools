@@ -30,8 +30,7 @@ const HeaderComponent = ({ color, editHeader }) => {
                 <div
                   className={`sidebar-container ${
                     openSidebar ? "sidebar-open" : "sidebar-close"
-                  }`}
-                >
+                  }`}>
                   <Link href="/">
                     <p className="tabs-mobile">Hjem</p>
                   </Link>
@@ -63,8 +62,7 @@ const HeaderComponent = ({ color, editHeader }) => {
                     position: "absolute",
                     top: "0",
                     left: "0",
-                  }}
-                ></div>
+                  }}></div>
               )}
             </>
           ) : (
@@ -86,7 +84,6 @@ const HeaderComponent = ({ color, editHeader }) => {
               <Link href="/oversikt/startpage">
                 <p className="tabs">Oversikt</p>
               </Link>
-             
 
               <LoginButton />
               <LogoutButton />
