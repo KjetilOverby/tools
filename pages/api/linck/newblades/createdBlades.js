@@ -17,9 +17,13 @@ export default async (req, res) => {
           {
             $match: {
               updated: {
-                $gte: new Date(`${currentYear}-${req.query.month}-01`),
+                $gte: new Date(
+                  `${req.query.yearRequest}-${req.query.month}-01`
+                ),
                 $lte: new Date(
-                  `${currentYear}-${req.query.month}-${lastDay.getDate()}`
+                  `${req.query.yearRequest}-${
+                    req.query.month2
+                  }-${lastDay.getDate()}`
                 ),
               },
             },

@@ -7,6 +7,8 @@ const CalendarPicker = ({
   year,
   setMonthRequest,
   setMonthRequest2,
+  monthRequest,
+  monthRequest2,
   setYearRequest,
   setUpdate,
   update,
@@ -18,10 +20,16 @@ const CalendarPicker = ({
   const monthCountDownHandler = () => {
     setMonthRequest(month - 1);
     setMonthRequest2(month - 1);
-    if (month < 12) {
+
+    if(monthRequest2 === 1 && monthRequest === 12) {
+      setMonthRequest(new Date().getMonth() + 1);
+      setMonthRequest2(new Date().getMonth() + 1);
+    }
+
+  /*   if (month < 12) {
       setMonthRequest(1);
       setMonthRequest2(12);
-    }
+    } */
     setTimeout(() => {
       setUpdate(!update);
     }, 200);
@@ -29,14 +37,31 @@ const CalendarPicker = ({
   const monthCountUpHandler = () => {
     setMonthRequest(month + 1);
     setMonthRequest2(month + 1);
-    if (month === 13) {
+
+    if(monthRequest2 === 1 && monthRequest === 12) {
+      setMonthRequest(new Date().getMonth() + 1);
+      setMonthRequest2(new Date().getMonth() + 1);
+    }
+  /*   if (month === 13) {
       setMonthRequest(1);
       setMonthRequest2(12);
-    }
+    } */
     setTimeout(() => {
       setUpdate(!update);
     }, 200);
   };
+
+ useEffect(() => {
+  if (monthRequest === 0) {
+    setMonthRequest2(1);
+    setMonthRequest(1);
+  } else if (monthRequest === 13) {
+    setMonthRequest2(1);
+    setMonthRequest(1);
+  }
+}, [monthRequest]) 
+
+
   const yearCountDownHandler = () => {
     setYearRequest(year - 1);
     setTimeout(() => {
@@ -88,14 +113,24 @@ const CalendarPicker = ({
       case 12:
         setNamedMonth("desember");
         break;
-      case 13:
+     /*  case 13:
         setNamedMonth("januar - desember");
-        break;
+        break; */
     }
   }, [namedMonth]);
+
+  const showYear = () => {
+    setMonthRequest2(12)
+    setMonthRequest(1)
+    setTimeout(() => {
+      setNamedMonth("januar - desember");
+    }, 1000);
+  }
   return (
     <>
+    <div>
       <div className="container">
+      
         <div className="arrow-container">
           <div>
             <MdKeyboardArrowLeft
@@ -134,18 +169,24 @@ const CalendarPicker = ({
             <p>{year}</p>
           </div>
         </div>
+        
+      </div>
+      <button className="btn" onClick={showYear}>Hele året</button>
       </div>
       <style jsx>
         {`
           .container {
             display: flex;
-            width: 10rem;
+            width: 15rem;
             justify-content: space-between;
           }
           .arrow-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+          }
+          .btn {
+            margin-top: 2rem
           }
         `}
       </style>

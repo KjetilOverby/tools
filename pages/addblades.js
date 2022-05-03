@@ -8,6 +8,7 @@ import { MyContext } from "../src/contexts/MyContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import AddBladesInputComponent from "../src/components/addblades/AddBladesInputComponent";
 import { v4 as uuidv4 } from "uuid";
+import CalendarPicker from '../src/components/common/CalendarPicker'
 
 const api = axios.create({
   baseURL: process.env.api,
@@ -34,13 +35,18 @@ const Addblades = () => {
   const [serialInput, setSerialInput] = useState();
   const [uuid, setUuid] = useState();
 
+  const [yearRequest, setYearRequest] = useState(new Date().getFullYear());
+  const [monthRequest, setMonthRequest] = useState(new Date().getMonth() + 1);
+  const [monthRequest2, setMonthRequest2] = useState(new Date().getMonth() + 1);
+  const [update, setUpdate] = useState(false);
+
   useEffect(() => {
     setUuid(uuidv4());
   }, [updateNewblades]);
 
   useEffect(() => {
     api
-      .get(`/api/linck/newblades/createdBlades?month=${createdMonth}`)
+      .get(`/api/linck/newblades/createdBlades?month=${monthRequest}&month2=${monthRequest2}&yearRequest=${yearRequest}`)
       .then(function (response) {
         setNewBlades(response.data.data);
       })
@@ -51,7 +57,7 @@ const Addblades = () => {
       .then(function () {
         // always executed
       });
-  }, [updateNewblades]);
+  }, [updateNewblades, monthRequest]);
 
   const deleteCreatedBladeHandler = () => {
     deleteCreatedBladeHandler2();
@@ -154,7 +160,22 @@ const Addblades = () => {
           <HeaderStartPage />
         </div>
         <div className="image-container"></div>
+        <div className="calendar-container">
+
+        <CalendarPicker 
+         month={monthRequest}
+         year={yearRequest}
+         setMonthRequest={setMonthRequest}
+         setMonthRequest2={setMonthRequest2}
+         monthRequest={monthRequest}
+         monthRequest2={monthRequest2}
+         setYearRequest={setYearRequest}
+         setUpdate={setUpdate}
+         update={update}
+        />
+        </div>
         <div className="newblades-main-container">
+          
           <div className="newblades-container">
             <p>Antall: {newBlades && newBlades.length}</p>
             {newBlades &&
@@ -194,6 +215,9 @@ const Addblades = () => {
         {`
           .container {
             display: relative;
+          }
+          .calendar-container {
+            padding: 2rem
           }
           .header-container {
             width: 100%;
