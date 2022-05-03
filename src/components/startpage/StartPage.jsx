@@ -19,7 +19,7 @@ const StartPage = () => {
             <HeaderStartPage color="white" />
           </div>
           <div className="header-container">
-            <h1 className="header">Verktøyregister</h1>
+            <h1 className="header">Verktøyregister.</h1>
             <div className="text-container">
               <p className="text">
                 Registrering av sagblader, kniver og segmenter.
