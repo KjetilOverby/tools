@@ -13,7 +13,7 @@ const api = axios.create({
 
 const Omlodding = () => {
   const [deletedBlades, setDeletedBlades] = useState();
-  const [getTypeRetip, setGetTypeRetip] = useState('Kanefusa 2.8-4.2');
+  const [getTypeRetip, setGetTypeRetip] = useState('Kanefusa 2.2-3.6');
 
 
   

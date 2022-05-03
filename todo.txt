@@ -1,0 +1,18 @@
+/oversikt/toolinputedit: {
+    * legge inn datepicker
+    * når man velger verktøytype så kan man ikke se nye verktøy
+}
+
+oversikt/startpage {
+    * Det som er lagt inn den siste eller første dagen i en måned vises ikke.
+}
+
+/lincksearch {
+    * noen ganger så oppdaterer ikke omlodding seg etter at man har kikket på knappen. Omloddingen kommer allikevel inn.
+}
+
+* sjekk data på kniver og segmenter, det er mye som ikke stemmer.
+
+* legg in datosøk
+
+* bedre oversiktsliste over kniver og segmenter.

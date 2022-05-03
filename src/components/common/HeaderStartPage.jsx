@@ -44,7 +44,7 @@ const HeaderComponent = ({ color, editHeader }) => {
                     <p className="tabs-mobile">Søk i linckblad</p>
                   </Link>
                   <Link href="/oversikt/startpage">
-                    <p className="tabs-mobile">Oversikt.</p>
+                    <p className="tabs-mobile">Oversikt</p>
                   </Link>
                   <Link href="/addblades">
                     <p className="tabs-mobile">Nye blad</p>
