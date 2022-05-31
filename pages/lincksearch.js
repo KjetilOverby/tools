@@ -44,6 +44,7 @@ const Lincksearch = () => {
   const [linckID, setLinckID] = useState();
   const [deletedBlades, setDeletedBlades] = useState();
   const [wasteMonth, setWasteMonth] = useState(new Date().getMonth() + 1);
+  const [wasteMonth2, setWasteMonth2] = useState(new Date().getMonth() + 2);
   const [namedMonth, setNamedMonth] = useState();
   const [wasteUpdate, setWasteUpdate] = useState(false);
   const currentYear = new Date().getFullYear();
@@ -93,12 +94,14 @@ const Lincksearch = () => {
   }, [wasteMonth]);
   const monthCountDownHandler = () => {
     setWasteMonth(wasteMonth - 1);
+    setWasteMonth2(wasteMonth2 - 1);
     if (wasteMonth < 2) {
       setWasteMonth(12);
     }
   };
   const monthCountUpHandler = () => {
     setWasteMonth(wasteMonth + 1);
+    setWasteMonth2(wasteMonth2 + 1);
     if (wasteMonth >= 12) {
       setWasteMonth(1);
     }
@@ -115,7 +118,7 @@ const Lincksearch = () => {
   useEffect(() => {
     api
       .get(
-        `/api/linck/deletedBlades?month=${wasteMonth}&month2=${wasteMonth}&yearRequest=${yearRequest}`
+        `/api/linck/deletedBlades?month=${wasteMonth}&month2=${wasteMonth2}&yearRequest=${yearRequest}`
       )
       .then(function (response) {
         setDeletedBlades(response.data.data);
@@ -186,7 +189,7 @@ const Lincksearch = () => {
   const [retipBlades, setRetipBlades] = useState();
   useEffect(() => {
     api
-      .get(`/api/linck/service/serviceblades?month=${wasteMonth}`)
+      .get(`/api/linck/service/serviceblades?month=${wasteMonth}&month2=${wasteMonth2}`)
       .then(function (response) {
         setRetipBlades(response.data.data);
       })

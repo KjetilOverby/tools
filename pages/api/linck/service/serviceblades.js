@@ -19,7 +19,7 @@ export default async (req, res) => {
               serviceDate: {
                 $gte: new Date(`${currentYear}-${req.query.month}-01`),
                 $lte: new Date(
-                  `${currentYear}-${req.query.month}-${lastDay.getDate()}`
+                  `${currentYear}-${req.query.month2}-01`
                 ),
               },
             },

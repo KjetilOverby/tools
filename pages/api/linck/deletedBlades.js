@@ -23,7 +23,7 @@ export default async (req, res) => {
                 $lte: new Date(
                   `${req.query.yearRequest}-${
                     req.query.month2
-                  }-${lastDay.getDate()}`
+                  }-01`
                 ),
               },
             },
