@@ -20,10 +20,10 @@ export default async (req, res) => {
                 $gte: new Date(
                   `${req.query.yearRequest}-${req.query.month}-01`
                 ),
-                $lte: new Date(
+                $lt: new Date(
                   `${req.query.yearRequest}-${
                     req.query.month2
-                  }-${lastDay.getDate()}`
+                  }-01`
                 ),
               },
             },

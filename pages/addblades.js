@@ -37,8 +37,10 @@ const Addblades = () => {
 
   const [yearRequest, setYearRequest] = useState(new Date().getFullYear());
   const [monthRequest, setMonthRequest] = useState(new Date().getMonth() + 1);
-  const [monthRequest2, setMonthRequest2] = useState(new Date().getMonth() + 1);
+  const [monthRequest2, setMonthRequest2] = useState(new Date().getMonth() + 2);
   const [update, setUpdate] = useState(false);
+
+  console.log(monthRequest2);
 
   useEffect(() => {
     setUuid(uuidv4());
@@ -49,6 +51,7 @@ const Addblades = () => {
       .get(`/api/linck/newblades/createdBlades?month=${monthRequest}&month2=${monthRequest2}&yearRequest=${yearRequest}`)
       .then(function (response) {
         setNewBlades(response.data.data);
+        updateNewblades(!updateNewblades)
       })
       .catch(function (error) {
         // handle error
@@ -57,7 +60,7 @@ const Addblades = () => {
       .then(function () {
         // always executed
       });
-  }, [updateNewblades, monthRequest]);
+  }, [updateNewblades, monthRequest, monthRequest2]);
 
   const deleteCreatedBladeHandler = () => {
     deleteCreatedBladeHandler2();

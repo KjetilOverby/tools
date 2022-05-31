@@ -17,16 +17,18 @@ const CalendarPicker = ({
   useEffect(() => {
     setNamedMonth(month);
   }, [month]);
+
+  console.log("month: " + month);
   const monthCountDownHandler = () => {
     setMonthRequest(month - 1);
-    setMonthRequest2(month - 1);
+    setMonthRequest2(monthRequest2 - 1);
 
-    if(monthRequest2 === 1 && monthRequest === 12) {
+    if (monthRequest2 === 1 && monthRequest === 12) {
       setMonthRequest(new Date().getMonth() + 1);
       setMonthRequest2(new Date().getMonth() + 1);
     }
 
-  /*   if (month < 12) {
+    /*   if (month < 12) {
       setMonthRequest(1);
       setMonthRequest2(12);
     } */
@@ -36,13 +38,13 @@ const CalendarPicker = ({
   };
   const monthCountUpHandler = () => {
     setMonthRequest(month + 1);
-    setMonthRequest2(month + 1);
+    setMonthRequest2(monthRequest2 + 1);
 
-    if(monthRequest2 === 1 && monthRequest === 12) {
+    if (monthRequest2 === 1 && monthRequest === 12) {
       setMonthRequest(new Date().getMonth() + 1);
       setMonthRequest2(new Date().getMonth() + 1);
     }
-  /*   if (month === 13) {
+    /*   if (month === 13) {
       setMonthRequest(1);
       setMonthRequest2(12);
     } */
@@ -51,16 +53,15 @@ const CalendarPicker = ({
     }, 200);
   };
 
- useEffect(() => {
-  if (monthRequest === 0) {
-    setMonthRequest2(1);
-    setMonthRequest(1);
-  } else if (monthRequest === 13) {
-    setMonthRequest2(1);
-    setMonthRequest(1);
-  }
-}, [monthRequest]) 
-
+  useEffect(() => {
+    if (monthRequest === 0) {
+      setMonthRequest2(1);
+      setMonthRequest(1);
+    } else if (monthRequest === 13) {
+      setMonthRequest2(1);
+      setMonthRequest(1);
+    }
+  }, [monthRequest]);
 
   const yearCountDownHandler = () => {
     setYearRequest(year - 1);
@@ -113,65 +114,65 @@ const CalendarPicker = ({
       case 12:
         setNamedMonth("desember");
         break;
-     /*  case 13:
+      /*  case 13:
         setNamedMonth("januar - desember");
         break; */
     }
   }, [namedMonth]);
 
   const showYear = () => {
-    setMonthRequest2(12)
-    setMonthRequest(1)
+    setMonthRequest2(12);
+    setMonthRequest(1);
     setTimeout(() => {
       setNamedMonth("januar - desember");
     }, 1000);
-  }
+  };
   return (
     <>
-    <div>
-      <div className="container">
-      
-        <div className="arrow-container">
-          <div>
-            <MdKeyboardArrowLeft
-              style={{ fontSize: "2rem", color: "red", cursor: "pointer" }}
-              onClick={monthCountDownHandler}
-            />
-            <MdKeyboardArrowRight
-              style={{
-                fontSize: "2rem",
-                color: "green",
-                cursor: "pointer",
-              }}
-              onClick={monthCountUpHandler}
-            />
+      <div>
+        <div className="container">
+          <div className="arrow-container">
+            <div>
+              <MdKeyboardArrowLeft
+                style={{ fontSize: "2rem", color: "red", cursor: "pointer" }}
+                onClick={monthCountDownHandler}
+              />
+              <MdKeyboardArrowRight
+                style={{
+                  fontSize: "2rem",
+                  color: "green",
+                  cursor: "pointer",
+                }}
+                onClick={monthCountUpHandler}
+              />
+            </div>
+            <div>
+              <p>{namedMonth}</p>
+            </div>
           </div>
-          <div>
-            <p>{namedMonth}</p>
+          <div className="arrow-container">
+            <div>
+              <MdKeyboardArrowLeft
+                style={{ fontSize: "2rem", color: "red", cursor: "pointer" }}
+                onClick={yearCountDownHandler}
+              />
+              <MdKeyboardArrowRight
+                style={{
+                  fontSize: "2rem",
+                  color: "green",
+                  cursor: "pointer",
+                }}
+                onClick={yearCountUpHandler}
+              />
+            </div>
+            <div>
+              <p>{year}</p>
+            </div>
           </div>
         </div>
-        <div className="arrow-container">
-          <div>
-            <MdKeyboardArrowLeft
-              style={{ fontSize: "2rem", color: "red", cursor: "pointer" }}
-              onClick={yearCountDownHandler}
-            />
-            <MdKeyboardArrowRight
-              style={{
-                fontSize: "2rem",
-                color: "green",
-                cursor: "pointer",
-              }}
-              onClick={yearCountUpHandler}
-            />
-          </div>
-          <div>
-            <p>{year}</p>
-          </div>
-        </div>
-        
-      </div>
-      <button className="btn" onClick={showYear}>Hele året</button>
+        <button className="btn" onClick={showYear}>
+          Hele året
+        </button>
       </div>
       <style jsx>
         {`
@@ -186,7 +187,7 @@ const CalendarPicker = ({
             align-items: center;
           }
           .btn {
-            margin-top: 2rem
+            margin-top: 2rem;
           }
         `}
       </style>

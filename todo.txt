@@ -16,3 +16,7 @@ oversikt/startpage {
 * legg in datosøk
 
 * bedre oversiktsliste over kniver og segmenter.
+
+NYE BLAD
+
+Data før og etter nyttår må fikses.
