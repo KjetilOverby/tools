@@ -97,10 +97,12 @@ const HeaderComponent = ({ color, editHeader }) => {
           background: transparent;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-end;
           padding: 0 5rem;
-          width: 55rem;
+          width: 100%;
           z-index: 1000;
+          border-bottom: 1px solid #f0f0f0;
+          padding-bottom: 1rem;
         }
 
         .sidebar-container {
@@ -139,10 +141,10 @@ const HeaderComponent = ({ color, editHeader }) => {
         }
         .tabs {
           text-transform: uppercase;
-          transition: 0.5s;
-          color: ${color};
+          transition: color 0.5s;
           font-size: 1rem;
-          font-weight: 100;
+          font-weight: bold;
+          color: ${color};
         }
         .tabs-mobile {
           text-transform: uppercase;
@@ -156,12 +158,12 @@ const HeaderComponent = ({ color, editHeader }) => {
           color: #747474;
         }
         .tabContainer {
-          width: 45rem;
+          width: 35rem;
           height: 100%;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-end;
         }
         @media screen and (max-width: 1000px) {
           .container {

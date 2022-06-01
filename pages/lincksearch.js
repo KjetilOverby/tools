@@ -327,14 +327,14 @@ const Lincksearch = () => {
         <div className="header-container">
           <HeaderStartPage />
         </div>
-        <div className="image-container">
+      {/*   <div className="image-container">
+        </div> */}
           <input
             onChange={(e) => setSearchInput(e.target.value)}
             className="input"
             placeholder="Search"
             value={searchInput}
           />
-        </div>
         {searchInput && searchInput.length >= 2 && filteredBlades.length > 0 ? (
           <div className="blades-container">
             {filteredBlades &&
@@ -440,7 +440,7 @@ const Lincksearch = () => {
           }
           .container {
             display: grid;
-            grid-template-rows: 6rem 20rem 1fr;
+            grid-template-rows: 6rem 8rem 1fr;
             grid-template-areas:
               "top"
               "middle"
@@ -483,11 +483,13 @@ const Lincksearch = () => {
             padding: 0.5rem;
             font-weight: 100;
             outline: none;
+            background: #e0dede;
+            margin: 2rem
           }
           .waste-container {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 1.8rem;
           }
           .waste-list {
             color: grey;

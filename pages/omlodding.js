@@ -173,9 +173,9 @@ useEffect(() => {
         <div className="header-container">
           <HeaderComponent />
         </div>
-        <div className="image-container">
+       {/*  <div className="image-container">
           <h1 className="image-header">Omlodding</h1>
-        </div>
+        </div> */}
         <div className="content-container">
           <div className="date-picker-container">
             <CalendarPicker

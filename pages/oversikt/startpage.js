@@ -214,9 +214,9 @@ const Oversikt = () => {
           <HeaderStartPage color="black" />
         </div>
 
-        <div className="image-container">
+      {/*   <div className="image-container">
           <h1 className="header">Oversikt over Linckblad</h1>
-        </div>
+        </div> */}
         <div className="page-container">
           <button onClick={() => setReload(!reload)}>Reload</button>
           <div className="arrow-btn-container">

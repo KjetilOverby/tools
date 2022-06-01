@@ -162,7 +162,7 @@ const Addblades = () => {
         <div className="header-container">
           <HeaderStartPage />
         </div>
-        <div className="image-container"></div>
+        {/* <div className="image-container"></div> */}
         <div className="calendar-container">
 
         <CalendarPicker 
