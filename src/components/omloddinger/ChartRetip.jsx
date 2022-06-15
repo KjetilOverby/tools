@@ -14,7 +14,7 @@ const ChartRetip = ({
   title,
   text,
   input,
-  getTypeInput
+  getTypeInput,
 }) => {
   return (
     <>
@@ -122,6 +122,7 @@ const ChartRetip = ({
           }
           .number {
             width: 2rem;
+            color: ${Colors.textColor};
           }
           .invisible-text {
             color: transparent;
@@ -146,6 +147,7 @@ const ChartRetip = ({
           }
           .waste-description {
             margin-left: 0.5rem;
+            color: ${Colors.textColor};
           }
 
           @media (max-width: 1000px) {

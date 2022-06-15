@@ -100,6 +100,8 @@ useEffect(() => {
   }, [allBladesRetip]);
 
   const [updateCalc, setUpdateCalc] = useState(false)
+  
+
 
   useEffect(() => {
     api
@@ -363,6 +365,7 @@ useEffect(() => {
           }
           .number {
             width: 2rem;
+            color:${Colors.textColor}
           }
           .piechart-waste-container {
             display: grid;
@@ -384,6 +387,7 @@ useEffect(() => {
           }
           .waste-description {
             margin-left: 0.5rem;
+            color:${Colors.textColor}
           }
           @media (max-width: 2100px) {
             .content-container {

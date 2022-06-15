@@ -258,7 +258,7 @@ const Lincksearch = () => {
 
   return (
     <>
-      {createDeletedBladeConfirm ? (
+     {/*  {createDeletedBladeConfirm ? (
         <h4
           style={{
             position: "fixed",
@@ -278,7 +278,7 @@ const Lincksearch = () => {
             ? "create deleted blade success."
             : "creating a deleted blade not succeed."}
         </h4>
-      ) : null}
+      ) : null} */}
       {openDeleteModal && (
         <ModalComponentEdit
           title="Slette"
