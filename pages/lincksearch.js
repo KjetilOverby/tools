@@ -323,9 +323,9 @@ const Lincksearch = () => {
           actionBtn={commentUpdateHandler}
         />
       )}
-      <div className="container">
+      <div className="container global-bg">
         <div className="header-container">
-          <HeaderStartPage />
+          <HeaderStartPage color='seagreen' />
         </div>
       {/*   <div className="image-container">
         </div> */}
@@ -367,9 +367,9 @@ const Lincksearch = () => {
         ) : (
           <div className="img-text-container">
             <h1 className="blades-header">Ingen søk eller treff</h1>
-            <div className="bladesImg-container">
+           {/*  <div className="bladesImg-container">
               <Image src={search} />
-            </div>
+            </div> */}
             <div className="waste-container">
               <h5>
                 Vrakede blad {namedMonth} {currentYear}
@@ -445,8 +445,9 @@ const Lincksearch = () => {
               "top"
               "middle"
               "bottom";
-            min-height: 100vh;
+            min-height: 150vh;
             max-width: 100vw;
+
           }
           .image-container {
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)),

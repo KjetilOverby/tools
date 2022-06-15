@@ -16,7 +16,7 @@ const StartPage = () => {
       <div className="image-container">
         <div className="container">
           <div className="menu-header">
-            <HeaderStartPage color="white" />
+            <HeaderStartPage color="dodgerblue" />
           </div>
           <div className="header-container">
             <h1 className="header">Verktøyregister</h1>
@@ -112,7 +112,7 @@ const StartPage = () => {
           }
           .image-container {
             background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
-              url("https://images.unsplash.com/photo-1605778336817-121ba9819b96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1582&q=80");
+              url("https://images.unsplash.com/photo-1589691962030-8d2b7f2a1ffe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
             background-size: cover;
             height: 30rem;
             background-position: center;

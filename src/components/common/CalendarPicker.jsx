@@ -147,7 +147,7 @@ const CalendarPicker = ({
               />
             </div>
             <div>
-              <p>{namedMonth}</p>
+              <p className="time">{namedMonth}</p>
             </div>
           </div>
           <div className="arrow-container">
@@ -166,7 +166,7 @@ const CalendarPicker = ({
               />
             </div>
             <div>
-              <p>{year}</p>
+              <p className="time">{year}</p>
             </div>
           </div>
         </div>
@@ -188,6 +188,9 @@ const CalendarPicker = ({
           }
           .btn {
             margin-top: 2rem;
+          }
+          .time {
+            color: dodgerblue;
           }
         `}
       </style>

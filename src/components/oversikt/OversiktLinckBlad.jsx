@@ -83,7 +83,7 @@ const OversiktLinckBlad = ({
                       <div key={item._id.type}>
                         <div className="oversikt-container">
                           <p>{item._id.type}</p>
-                          <p>{item.typeCount}</p>
+                          <p className="count">{item.typeCount}</p>
                         </div>
                       </div>
                     );
@@ -106,7 +106,7 @@ const OversiktLinckBlad = ({
                   <div key={item._id.type}>
                     <div className="oversikt-container">
                       <p>{item._id.type}</p>
-                      <p>{item.typeCount}</p>
+                      <p className="count">{item.typeCount}</p>
                     </div>
                   </div>
                 );
@@ -120,7 +120,7 @@ const OversiktLinckBlad = ({
                   <div key={item._id.type}>
                     <div className="oversikt-container">
                       <p>{item._id.type}</p>
-                      <p>{item.typeCount}</p>
+                      <p className="count">{item.typeCount}</p>
                     </div>
                   </div>
                 );
@@ -134,7 +134,7 @@ const OversiktLinckBlad = ({
                   <div key={item._id.type}>
                     <div className="oversikt-container">
                       <p>{item._id.type}</p>
-                      <p>{item.typeCount}</p>
+                      <p className="count">{item.typeCount}</p>
                     </div>
                   </div>
                 );
@@ -155,12 +155,15 @@ const OversiktLinckBlad = ({
           .antall-container {
             grid-area: antall;
           }
+          .count {
+            color: indianred;
+          }
           .table-ant-nom-container {
             display: flex;
           }
           .nom {
             margin-left: 1.5rem;
-            color: blue;
+            color: dodgerblue;
           }
           .omlodd-container {
             grid-area: omlodd;
@@ -179,7 +182,7 @@ const OversiktLinckBlad = ({
             width: 11rem;
           }
           .table-header {
-            color: #203e90;
+            color: dodgerblue;
           }
           p {
             font-size: 0.8rem;

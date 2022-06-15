@@ -158,9 +158,9 @@ const Addblades = () => {
           error={error}
         />
       )}
-      <div className="container">
+      <div className="container global-bg">
         <div className="header-container">
-          <HeaderStartPage />
+          <HeaderStartPage color='seagreen'/>
         </div>
         {/* <div className="image-container"></div> */}
         <div className="calendar-container">
@@ -180,7 +180,7 @@ const Addblades = () => {
         <div className="newblades-main-container">
           
           <div className="newblades-container">
-            <p>Antall: {newBlades && newBlades.length}</p>
+            <p className="description">Antall: {newBlades && newBlades.length}</p>
             {newBlades &&
               newBlades.map((item) => {
                 const openDeleteNewbladesHandler = () => {
@@ -218,9 +218,13 @@ const Addblades = () => {
         {`
           .container {
             display: relative;
+            min-height: 100vh
           }
           .calendar-container {
             padding: 2rem
+          }
+          .description {
+            color: dodgerblue
           }
           .header-container {
             width: 100%;

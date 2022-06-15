@@ -209,9 +209,9 @@ const Oversikt = () => {
   }, [yearRequest, monthRequest, monthRequest2, reload]);
   return (
     <>
-      <div className="container">
+      <div className="container global-bg">
         <div className="header-container">
-          <HeaderStartPage color="black" />
+          <HeaderStartPage color="seagreen" />
         </div>
 
       {/*   <div className="image-container">
@@ -221,7 +221,7 @@ const Oversikt = () => {
           <button onClick={() => setReload(!reload)}>Reload</button>
           <div className="arrow-btn-container">
             <div className="arrow-btn-each-container">
-              <h5>{nameOfMonth}</h5>
+              <h5 className="time">{nameOfMonth}</h5>
               <div>
                 <MdKeyboardArrowLeft
                   onClick={monthPickerDown}
@@ -234,7 +234,7 @@ const Oversikt = () => {
               </div>
             </div>
             <div className="arrow-btn-each-container">
-              <h5>{yearRequest}</h5>
+              <h5 className="time">{yearRequest}</h5>
               <div>
                 <MdKeyboardArrowLeft
                   onClick={() => setYearRequest(yearRequest - 1)}
@@ -281,6 +281,7 @@ const Oversikt = () => {
             width: 8rem;
           }
           .container {
+           min-height: 100vh
           }
           .header {
             color: white;
@@ -309,6 +310,9 @@ const Oversikt = () => {
           }
           p:hover {
             cursor: pointer;
+          }
+          .time {
+            color: seagreen
           }
           @media (max-width: 1000px) {
             .header {

@@ -101,7 +101,7 @@ const HeaderComponent = ({ color, editHeader }) => {
           padding: 0 5rem;
           width: 100%;
           z-index: 1000;
-          border-bottom: 1px solid #f0f0f0;
+          border-bottom: 1px solid rgba(256, 256, 256, 0.2);
           padding-bottom: 1rem;
         }
 
@@ -143,7 +143,7 @@ const HeaderComponent = ({ color, editHeader }) => {
           text-transform: uppercase;
           transition: color 0.5s;
           font-size: 1rem;
-          font-weight: bold;
+          font-weight: 300;
           color: ${color};
         }
         .tabs-mobile {

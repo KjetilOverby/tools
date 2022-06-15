@@ -169,13 +169,11 @@ useEffect(() => {
 
   return (
     <>
-      <div className="container">
+      <div className="container global-bg">
         <div className="header-container">
-          <HeaderComponent />
+          <HeaderComponent color='seagreen' />
         </div>
-       {/*  <div className="image-container">
-          <h1 className="image-header">Omlodding</h1>
-        </div> */}
+      
         <div className="content-container">
           <div className="date-picker-container">
             <CalendarPicker
@@ -324,6 +322,7 @@ useEffect(() => {
             width: 28rem;
           }
           .container {
+            min-height: 100vh
           }
           .content-container {
             margin: 2rem 25rem;

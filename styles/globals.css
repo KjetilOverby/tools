@@ -43,3 +43,7 @@ hr {
 .mb {
   margin-bottom: 1.5rem;
 }
+
+.global-bg {
+  background: linear-gradient(black, rgb(5, 9, 17))
+}
