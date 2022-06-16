@@ -20,3 +20,8 @@ oversikt/startpage {
 NYE BLAD
 
 Data før og etter nyttår må fikses.
+
+
+lincksearch
+
+Fix setTimeout() retipUpdate()

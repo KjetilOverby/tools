@@ -106,53 +106,62 @@ const Lincksearch = () => {
       setWasteMonth(1);
     }
   };
-
+   
   useEffect(() => {
     if (linckBlades) {
       setFilteredBlades(
         linckBlades.filter((item) => item.serial.includes(searchInput))
       );
     }
-  }, [searchInput]);
+  }, [searchInput, wasteUpdate]);
 
   useEffect(() => {
-    api
-      .get(
-        `/api/linck/deletedBlades?month=${wasteMonth}&month2=${wasteMonth2}&yearRequest=${yearRequest}`
-      )
-      .then(function (response) {
-        setDeletedBlades(response.data.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+    try {
+      
+      api
+        .get(
+          `/api/linck/deletedBlades?month=${wasteMonth}&month2=${wasteMonth2}&yearRequest=${yearRequest}`
+        )
+        .then(function (response) {
+          setDeletedBlades(response.data.data);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }, [wasteMonth, wasteUpdate]);
 
-  const [createDeletedBladeConfirm, setCreateDeletedBladeConfirm] = useState();
 
-  const [confirmCreateDeletedBlade, setConfirmCreateDeletedBlade] = useState();
 
-  const createDeletedBladeHandler = () => {
-    api
-      .post(`/api/linck/createDeletedBlade/?user=${user.sub}`, {
-        type: getType,
-        serial: getSerial,
-        wasteNumberOfRetip: getNumberOfRetip,
-        wasteDate: new Date(),
-      })
-      .then(function (response) {
-        console.log(response);
-        setCreateDeletedBladeConfirm(response);
 
-        setConfirmCreateDeletedBlade(response.status);
-      });
+  const createDeletedBladeHandler = async () => {
+    try {      
+     await api
+        .post(`/api/linck/createDeletedBlade/?user=${user.sub}`, {
+          type: getType,
+          serial: getSerial,
+          wasteNumberOfRetip: getNumberOfRetip,
+          wasteDate: new Date(),
+        })
+        .then(function (response) {
+      console.log(response);
+        }).then(() => {
+          
+          setWasteUpdate(!wasteUpdate);
+      
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const deleteBladeCurrentBladeHandler = () => {
+ /*  const deleteBladeCurrentBladeHandler = () => {
     try {
       api
         .delete(`/api/linck/deleteBlade/?del=${linckID}&user=${user.sub}`)
@@ -169,13 +178,28 @@ const Lincksearch = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
 
   const deleteBladeHandler = () => {
-    createDeletedBladeHandler();
+    try {
+      api
+        .delete(`/api/linck/deleteBlade/?del=${linckID}&user=${user.sub}`)
+        .then((res) => { 
+          console.log(res);       
+            setOpenDeleteModal(false);
+            setLinckUpdate(!linckUpdate);
+            createDeletedBladeHandler();
+            
+            setSearchInput("");                                 
+            
+          })
+       
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (confirmCreateDeletedBlade === 200) {
       deleteBladeCurrentBladeHandler();
       setConfirmCreateDeletedBlade();
@@ -183,7 +207,7 @@ const Lincksearch = () => {
     } else {
       alert("Noe gikk galt");
     }
-  }, [confirmCreateDeletedBlade]);
+  }, [confirmCreateDeletedBlade]); */
 
   // SERVICE
   const [retipBlades, setRetipBlades] = useState();
@@ -202,18 +226,57 @@ const Lincksearch = () => {
       });
   }, [wasteMonth, wasteUpdate]);
 
-  const createServiceBladeHandler = () => {
-    api
-      .post(`/api/linck/service/createserviceBlade/?user=${user.sub}`, {
-        type: getType,
-        serial: getSerial,
+  const createServiceBladeHandler =  () => {
+    try {
+      
+      api
+        .post(`/api/linck/service/createserviceBlade/?user=${user.sub}`, {
+          type: getType,
+          serial: getSerial,
+          serviceDate: new Date(),
+        })
+        .then(function (response) {     
+        setTimeout(() => {
+          
+          setWasteUpdate(!wasteUpdate);
+        setSearchInput(getSerial);         
+        }, 1500);           
 
-        serviceDate: new Date(),
-      })
-      .then(function (response) {});
+      
+        })
+    } catch (error) {
+      console.log(error);
+    }
   };
+  console.log(wasteUpdate);
 
   const retipUpdateHandler = () => {
+    try {     
+      
+      api
+         .post(`/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`, {
+           type: getType,
+           performer: "Stridsbergs",
+           date: dateFormat(new Date(), "dd.mm.yyyy HH:MM"),
+         })
+         .then(function (res) {
+           console.log(res);
+             setOpenRetipModal(false);
+             setLinckUpdate(!linckUpdate);
+           })
+         .then(function() {
+            /*  setSearchInput(""); */
+                        
+            createServiceBladeHandler();
+             setWasteUpdate(!wasteUpdate);               
+            })
+    } catch (error) {
+      console.log(error);
+    }
+
+      
+  };
+/*   const retipUpdateHandler = () => {
     api
       .post(`/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`, {
         type: getType,
@@ -232,7 +295,7 @@ const Lincksearch = () => {
           createServiceBladeHandler();
         }
       });
-  };
+  }; */
 
   // COMMENT
   const [getCommentInput, setGetCommentInput] = useState();
