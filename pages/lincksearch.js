@@ -106,7 +106,7 @@ const Lincksearch = () => {
       setWasteMonth(1);
     }
   };
-   
+
   useEffect(() => {
     if (linckBlades) {
       setFilteredBlades(
@@ -117,7 +117,6 @@ const Lincksearch = () => {
 
   useEffect(() => {
     try {
-      
       api
         .get(
           `/api/linck/deletedBlades?month=${wasteMonth}&month2=${wasteMonth2}&yearRequest=${yearRequest}`
@@ -137,12 +136,9 @@ const Lincksearch = () => {
     }
   }, [wasteMonth, wasteUpdate]);
 
-
-
-
   const createDeletedBladeHandler = async () => {
-    try {      
-     await api
+    try {
+      await api
         .post(`/api/linck/createDeletedBlade/?user=${user.sub}`, {
           type: getType,
           serial: getSerial,
@@ -150,18 +146,17 @@ const Lincksearch = () => {
           wasteDate: new Date(),
         })
         .then(function (response) {
-      console.log(response);
-        }).then(() => {
-          
+          console.log(response);
+        })
+        .then(() => {
           setWasteUpdate(!wasteUpdate);
-      
         });
     } catch (error) {
       console.log(error);
     }
   };
 
- /*  const deleteBladeCurrentBladeHandler = () => {
+  /*  const deleteBladeCurrentBladeHandler = () => {
     try {
       api
         .delete(`/api/linck/deleteBlade/?del=${linckID}&user=${user.sub}`)
@@ -184,16 +179,14 @@ const Lincksearch = () => {
     try {
       api
         .delete(`/api/linck/deleteBlade/?del=${linckID}&user=${user.sub}`)
-        .then((res) => { 
-          console.log(res);       
-            setOpenDeleteModal(false);
-            setLinckUpdate(!linckUpdate);
-            createDeletedBladeHandler();
-            
-            setSearchInput("");                                 
-            
-          })
-       
+        .then((res) => {
+          console.log(res);
+          setOpenDeleteModal(false);
+          setLinckUpdate(!linckUpdate);
+          createDeletedBladeHandler();
+
+          setSearchInput("");
+        });
     } catch (error) {
       console.log(error);
     }
@@ -213,7 +206,9 @@ const Lincksearch = () => {
   const [retipBlades, setRetipBlades] = useState();
   useEffect(() => {
     api
-      .get(`/api/linck/service/serviceblades?month=${wasteMonth}&month2=${wasteMonth2}`)
+      .get(
+        `/api/linck/service/serviceblades?month=${wasteMonth}&month2=${wasteMonth2}`
+      )
       .then(function (response) {
         setRetipBlades(response.data.data);
       })
@@ -226,57 +221,46 @@ const Lincksearch = () => {
       });
   }, [wasteMonth, wasteUpdate]);
 
-  const createServiceBladeHandler =  () => {
+  const createServiceBladeHandler = () => {
     try {
-      
       api
         .post(`/api/linck/service/createserviceBlade/?user=${user.sub}`, {
           type: getType,
           serial: getSerial,
           serviceDate: new Date(),
         })
-        .then(function (response) {     
-        setTimeout(() => {
-          
-          setWasteUpdate(!wasteUpdate);
-        setSearchInput(getSerial);         
-        }, 1500);           
-
-      
-        })
+        .then(function (response) {
+          setSearchInput(getSerial);
+        });
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(wasteUpdate);
 
   const retipUpdateHandler = () => {
-    try {     
-      
+    try {
       api
-         .post(`/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`, {
-           type: getType,
-           performer: "Stridsbergs",
-           date: dateFormat(new Date(), "dd.mm.yyyy HH:MM"),
-         })
-         .then(function (res) {
-           console.log(res);
-             setOpenRetipModal(false);
-             setLinckUpdate(!linckUpdate);
-           })
-         .then(function() {
-            /*  setSearchInput(""); */
-                        
-            createServiceBladeHandler();
-             setWasteUpdate(!wasteUpdate);               
-            })
+        .post(
+          `/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`,
+          {
+            type: getType,
+            performer: "Stridsbergs",
+            date: dateFormat(new Date(), "dd.mm.yyyy HH:MM"),
+          }
+        )
+        .then(function (res) {
+          setOpenRetipModal(false);
+          setLinckUpdate(!linckUpdate);
+          createServiceBladeHandler();
+          setTimeout(() => {
+            setWasteUpdate(!wasteUpdate);
+          }, 2000);
+        });
     } catch (error) {
       console.log(error);
     }
-
-      
   };
-/*   const retipUpdateHandler = () => {
+  /*   const retipUpdateHandler = () => {
     api
       .post(`/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`, {
         type: getType,
@@ -321,7 +305,7 @@ const Lincksearch = () => {
 
   return (
     <>
-     {/*  {createDeletedBladeConfirm ? (
+      {/*  {createDeletedBladeConfirm ? (
         <h4
           style={{
             position: "fixed",
@@ -388,16 +372,16 @@ const Lincksearch = () => {
       )}
       <div className="container global-bg">
         <div className="header-container">
-          <HeaderStartPage color='seagreen' />
+          <HeaderStartPage color="seagreen" />
         </div>
-      {/*   <div className="image-container">
+        {/*   <div className="image-container">
         </div> */}
-          <input
-            onChange={(e) => setSearchInput(e.target.value)}
-            className="input"
-            placeholder="Search"
-            value={searchInput}
-          />
+        <input
+          onChange={(e) => setSearchInput(e.target.value)}
+          className="input"
+          placeholder="Search"
+          value={searchInput}
+        />
         {searchInput && searchInput.length >= 2 && filteredBlades.length > 0 ? (
           <div className="blades-container">
             {filteredBlades &&
@@ -430,7 +414,7 @@ const Lincksearch = () => {
         ) : (
           <div className="img-text-container">
             <h1 className="blades-header">Ingen søk eller treff</h1>
-           {/*  <div className="bladesImg-container">
+            {/*  <div className="bladesImg-container">
               <Image src={search} />
             </div> */}
             <div className="waste-container">
@@ -472,7 +456,6 @@ const Lincksearch = () => {
               </p>
               {retipBlades &&
                 retipBlades.map((item) => {
-                 
                   return (
                     <>
                       <p key={item._id} className="waste-list">
@@ -510,7 +493,6 @@ const Lincksearch = () => {
               "bottom";
             min-height: 150vh;
             max-width: 100vw;
-
           }
           .image-container {
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)),
@@ -548,7 +530,7 @@ const Lincksearch = () => {
             font-weight: 100;
             outline: none;
             background: #e0dede;
-            margin: 2rem
+            margin: 2rem;
           }
           .waste-container {
             position: absolute;
