@@ -221,7 +221,8 @@ const Lincksearch = () => {
       });
   }, [wasteMonth, wasteUpdate]);
 
-  const createServiceBladeHandler = () => {
+  const createServiceBladeHandler = async () => {
+    await retipUpdateHandler();
     try {
       api
         .post(`/api/linck/service/createserviceBlade/?user=${user.sub}`, {
@@ -230,7 +231,9 @@ const Lincksearch = () => {
           serviceDate: new Date(),
         })
         .then(function (response) {
+          console.log(response);
           setSearchInput(getSerial);
+          setWasteUpdate(!wasteUpdate);
         });
     } catch (error) {
       console.log(error);
@@ -238,7 +241,7 @@ const Lincksearch = () => {
   };
 
   const retipUpdateHandler = () => {
-    try {
+    return new Promise((resolve, reject) => {
       api
         .post(
           `/api/linck/service/updateretip/?ids=${linckID}&user=${user.sub}`,
@@ -251,14 +254,11 @@ const Lincksearch = () => {
         .then(function (res) {
           setOpenRetipModal(false);
           setLinckUpdate(!linckUpdate);
-          createServiceBladeHandler();
           setTimeout(() => {
-            setWasteUpdate(!wasteUpdate);
-          }, 2000);
+            resolve(console.log(res.status === 200));
+          }, 1500);
         });
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
   /*   const retipUpdateHandler = () => {
     api
@@ -353,7 +353,7 @@ const Lincksearch = () => {
           description="Legg til omlodding fra Stridsbergs med dagens dato."
           getSerial={getSerial}
           actionHover="blue"
-          actionBtn={retipUpdateHandler}
+          actionBtn={createServiceBladeHandler}
         />
       )}
       {openCommentModal && (
