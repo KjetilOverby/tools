@@ -183,7 +183,10 @@ const Lincksearch = () => {
           console.log(res);
           setOpenDeleteModal(false);
           setLinckUpdate(!linckUpdate);
-          createDeletedBladeHandler();
+          setTimeout(() => {
+            
+            createDeletedBladeHandler();
+          }, 1500);
 
           setSearchInput("");
         });
