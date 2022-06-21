@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 const axios = require("axios");
 import { Auth0Provider } from "@auth0/auth0-react";
+import Hidden from '../src/components/common/Hidden'
 
 const api = axios.create({
   baseURL: process.env.api,
@@ -50,11 +51,18 @@ const Test = () => {
   return (
     <>
       <div className="container">
-        
+
+        <Hidden size='medium-down'>        
         <h1 className="header">Kniver og motstål</h1>
+        </Hidden>
+        <Hidden size='small-down'>
+
         {data.map(item => item.serial)}
+        </Hidden>
      
       </div>
+
+ 
       <style jsx>
         {`
         
