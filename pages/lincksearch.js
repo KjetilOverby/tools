@@ -13,6 +13,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { FaComments } from "react-icons/fa";
 const axios = require("axios");
 import { useAuth0 } from "@auth0/auth0-react";
+import { resolve } from "path";
 
 const api = axios.create({
   baseURL: process.env.api,
@@ -136,25 +137,7 @@ const Lincksearch = () => {
     }
   }, [wasteMonth, wasteUpdate]);
 
-  const createDeletedBladeHandler = async () => {
-    try {
-      await api
-        .post(`/api/linck/createDeletedBlade/?user=${user.sub}`, {
-          type: getType,
-          serial: getSerial,
-          wasteNumberOfRetip: getNumberOfRetip,
-          wasteDate: new Date(),
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .then(() => {
-          setWasteUpdate(!wasteUpdate);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+ 
 
   /*  const deleteBladeCurrentBladeHandler = () => {
     try {
@@ -175,6 +158,47 @@ const Lincksearch = () => {
     }
   }; */
 
+/*   const [promiseDelete, setPromiseDelete] = useState()
+
+  const deleteBladeHandler = () => {
+    setPromiseDelete(new Promise((resolve, reject => {
+      resolve(api
+        .delete(`/api/linck/deleteBlade/?del=${linckID}&user=${user.sub}`))
+    })))
+      
+        .then((res) => {
+          console.log(res);
+          setOpenDeleteModal(false);
+          setLinckUpdate(!linckUpdate);
+          setTimeout(() => {
+            
+            createDeletedBladeHandler();
+          }, 1500);
+
+          setSearchInput("");
+        });
+  
+  }; */
+
+  const createDeletedBladeHandler = async () => {
+    try {
+      await api
+        .post(`/api/linck/createDeletedBlade/?user=${user.sub}`, {
+          type: getType,
+          serial: getSerial,
+          wasteNumberOfRetip: getNumberOfRetip,
+          wasteDate: new Date(),
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .then(() => {
+          setWasteUpdate(!wasteUpdate);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const deleteBladeHandler = () => {
     try {
       api
@@ -193,17 +217,9 @@ const Lincksearch = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
 
-  /* useEffect(() => {
-    if (confirmCreateDeletedBlade === 200) {
-      deleteBladeCurrentBladeHandler();
-      setConfirmCreateDeletedBlade();
-    } else if (confirmCreateDeletedBlade === undefined) {
-    } else {
-      alert("Noe gikk galt");
-    }
-  }, [confirmCreateDeletedBlade]); */
+
 
   // SERVICE
   const [retipBlades, setRetipBlades] = useState();
@@ -421,7 +437,7 @@ const Lincksearch = () => {
               <Image src={search} />
             </div> */}
             <div className="waste-container">
-              <h5>
+              <h5 className="month-text">
                 Vrakede blad {namedMonth} {currentYear}
               </h5>
               <MdKeyboardArrowLeft
@@ -534,6 +550,9 @@ const Lincksearch = () => {
             outline: none;
             background: #e0dede;
             margin: 2rem;
+          }
+          .month-text {
+            color: seagreen
           }
           .waste-container {
             position: absolute;
