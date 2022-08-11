@@ -73,10 +73,6 @@ const KniverStartpage = () => {
               antallImaskin="30"
               maskin="ZD1/ZD2"
               type="V25-24-054"
-              totalt={tools && tools[8].antall}
-              ID={tools && tools[8]._id}
-              imgUrl={tools && tools[8].img}
-              toolType={tools && tools[8].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(reduserKniv)}
             />
@@ -88,10 +84,6 @@ const KniverStartpage = () => {
               antallImaskin="30"
               maskin="ZD1/ZD2"
               type="V40-41-324"
-              totalt={tools && tools[9].antall}
-              ID={tools && tools[9]._id}
-              imgUrl={tools && tools[9].img}
-              toolType={tools && tools[9].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(motstV40)}
             />
@@ -103,10 +95,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="ZD1/ZD2"
               type="V25-24-055"
-              totalt={tools && tools[10].antall}
-              ID={tools && tools[10]._id}
-              imgUrl={tools && tools[10].img}
-              toolType={tools && tools[10].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(motstV25)}
             />
@@ -129,10 +117,6 @@ const KniverStartpage = () => {
               maskin="VP34/VPP34"
               antallImaskin="48"
               type="kniv"
-              totalt={tools && tools[11].antall}
-              ID={tools && tools[11]._id}
-              imgUrl={tools && tools[11].img}
-              toolType={tools && tools[11].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(vpp34Kniv)}
             />
@@ -144,10 +128,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="VP34/VPP34"
               type="VPS-28-087"
-              totalt={tools && tools[12].antall}
-              ID={tools && tools[12]._id}
-              imgUrl={tools && tools[12].img}
-              toolType={tools && tools[12].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(vpp32Knivholder)}
             />
@@ -160,10 +140,6 @@ const KniverStartpage = () => {
               dim="41x88,5x27,5mm"
               maskin="VP34/VPP34"
               type="VPS-28-072"
-              totalt={tools && tools[13].antall}
-              ID={tools && tools[13]._id}
-              imgUrl={tools && tools[13].img}
-              toolType={tools && tools[13].type}
               btnTitle={toolCardBtnTitle}
               vrak={vpp34motstH}
             />
@@ -175,10 +151,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="VP34/VPP34"
               type="VPS-28-071"
-              totalt={tools && tools[14].antall}
-              ID={tools && tools[14]._id}
-              imgUrl={tools && tools[14].img}
-              toolType={tools && tools[14].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(vpp34motstV)}
             />
@@ -204,10 +176,6 @@ const KniverStartpage = () => {
               antallTenner=""
               type="kniv"
               maskin="VP34"
-              totalt={tools && tools[15].antall}
-              ID={tools && tools[15]._id}
-              imgUrl={tools && tools[15].img}
-              toolType={tools && tools[15].type}
               btnTitle={toolCardBtnTitle}
               vrak={vp34Kniv}
             />
@@ -219,10 +187,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="VP34"
               type=""
-              totalt={tools && tools[16].antall}
-              ID={tools && tools[16]._id}
-              imgUrl={tools && tools[16].img}
-              toolType={tools && tools[16].type}
               btnTitle={toolCardBtnTitle}
               vrak={vp34motst}
             />
@@ -248,10 +212,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="VP48"
               type="VP48-08-037"
-              totalt={tools && tools[17].antall}
-              ID={tools && tools[17]._id}
-              imgUrl={tools && tools[17].img}
-              toolType={tools && tools[17].type}
               btnTitle={toolCardBtnTitle}
               vrak={vp48Kniv}
             />
@@ -263,10 +223,6 @@ const KniverStartpage = () => {
               antallTenner=""
               maskin="VP48"
               type="kniv"
-              totalt={tools && tools[18].antall}
-              ID={tools && tools[18]._id}
-              imgUrl={tools && tools[18].img}
-              toolType={tools && tools[18].type}
               btnTitle={toolCardBtnTitle}
               vrak={vp48motstH}
             />
@@ -278,10 +234,6 @@ const KniverStartpage = () => {
               maskin="VP48"
               dim="55x85x25x6mm"
               type="kniv"
-              totalt={tools && tools[19].antall}
-              ID={tools && tools[19]._id}
-              imgUrl={tools && tools[19].img}
-              toolType={tools && tools[19].type}
               btnTitle={toolCardBtnTitle}
               vrak={vp48motstV}
             />
@@ -308,10 +260,6 @@ const KniverStartpage = () => {
               antallTenner=""
               dim="575x185x15/16mm 6-214,2/332"
               maskin="Bruks 820 CS"
-              totalt={tools && tools[20].antall}
-              ID={tools && tools[20]._id}
-              imgUrl={tools && tools[20].img}
-              toolType={tools && tools[20].type}
               btnTitle={toolCardBtnTitle}
               vrak={bruksKniv}
             />
@@ -323,10 +271,6 @@ const KniverStartpage = () => {
               dim="580x59x15"
               type="V-KM7100"
               maskin="Bruks 820 CS"
-              totalt={tools && tools[21].antall}
-              ID={tools && tools[21]._id}
-              imgUrl={tools && tools[21].img}
-              toolType={tools && tools[21].type}
               btnTitle={toolCardBtnTitle}
             />
             <ToolCard
@@ -337,10 +281,6 @@ const KniverStartpage = () => {
               dim="580x59x44"
               type="V-KM5105"
               maskin="Bruks 820 CS"
-              totalt={tools && tools[22].antall}
-              ID={tools && tools[22]._id}
-              imgUrl={tools && tools[22].img}
-              toolType={tools && tools[22].type}
               btnTitle={toolCardBtnTitle}
             />
             <BoltCard img={bruksJust} type="M10x80" antallImaskin="16" />

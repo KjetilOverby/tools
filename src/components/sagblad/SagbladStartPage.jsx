@@ -43,10 +43,6 @@ const SagbladStartPage = () => {
               antallImaskin="21"
               maskin="-"
               type="V-SH0985 SUPER Hi-MAX"
-              totalt={tools && tools[23].antall}
-              ID={tools && tools[23]._id}
-              imgUrl={tools && tools[23].img}
-              toolType={tools && tools[23].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(trimmerJust)}
             />
@@ -58,10 +54,6 @@ const SagbladStartPage = () => {
               antallImaskin="1"
               maskin="Eksaktkappe"
               type="V-SH1003"
-              totalt={tools && tools[24].antall}
-              ID={tools && tools[24]._id}
-              imgUrl={tools && tools[24].img}
-              toolType={tools && tools[24].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(eksaktKapp)}
             />
@@ -73,10 +65,6 @@ const SagbladStartPage = () => {
               antallTenner="96"
               maskin=""
               type="V-SH0675"
-              totalt={tools && tools[25].antall}
-              ID={tools && tools[25]._id}
-              imgUrl={tools && tools[25].img}
-              toolType={tools && tools[25].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(endekapp)}
             />
@@ -96,10 +84,6 @@ const SagbladStartPage = () => {
               antallTenner="72"
               maskin=""
               type="V-SH1008"
-              totalt={tools && tools[26].antall}
-              ID={tools && tools[26]._id}
-              imgUrl={tools && tools[26].img}
-              toolType={tools && tools[26].type}
               btnTitle={toolCardBtnTitle}
               vrak={Math.abs(trimmerBord)}
             />

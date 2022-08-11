@@ -36,7 +36,7 @@ const OversiktLinckBlad = ({
       id: 5,
     },
     {
-      ant: 60,
+      ant: 70,
       id: 6,
     },
     {
